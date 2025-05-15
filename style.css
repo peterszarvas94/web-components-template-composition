@@ -1,6 +1,12 @@
+/* for global */
+body {
+	padding: 0 1rem;
+}
+
+/* for web components */
 .ring {
 	border: 1px solid #bbb;
 	border-radius: 8px;
-	padding: 15px;
-	margin: 10px 0;
+	padding: 1rem;
+	margin: 1rem 0;
 }
