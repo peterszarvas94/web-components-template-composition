@@ -46,8 +46,9 @@ class TemplateContent extends HTMLElement {
 				// Apply props to the child template
 				this.applyProps(childContent, childProps);
 
-				// Find the pet container in the main template
-				const childContainer = content.querySelector(".pet-container");
+				// Find the child container in the main template
+				const childContainer =
+					content.querySelector(".child-container");
 				if (childContainer) {
 					// Append the entire child template to the container
 					childContainer.appendChild(childContent);
