@@ -9,53 +9,60 @@
 		<link rel="icon" href="favicon.ico" />
 	</head>
 	<body>
-		<!-- defining templates -->
 		<template id="owner">
 			<div class="ring">
-				<h2>Owner</h2>
-				<p>Owner name: <span class="owner-name"></span></p>
-				<div class="child-container"></div>
+				<h3>Owner</h3>
+				<p>Owner name: <slot name="owner-name"></slot></p>
+				<div class="child-container"><slot name="pet"></slot></div>
 			</div>
 		</template>
+
 		<template id="cat">
 			<div class="ring">
-				<h2>I am a cat</h2>
-				<p>Name: <span class="name"></span></p>
-				<p>Age: <span class="age"></span></p>
+				<h3>I am a cat</h3>
+				<p>Name: <slot name="name"></slot></p>
+				<p>Age: <slot name="age"></slot></p>
 			</div>
 		</template>
+
 		<template id="dog">
 			<div class="ring">
-				<h2>I am a dog</h2>
-				<p>Name: <span class="name"></span></p>
-				<p>Breed: <span class="breed"></span></p>
+				<h3>I am a dog</h3>
+				<p>Name: <slot name="name"></slot></p>
+				<p>Breed: <slot name="breed"></slot></p>
 			</div>
 		</template>
 
-		<!-- rendering templates -->
 		<h1>Template Composition Demo</h1>
 
-		<!-- Standalone templates -->
-		<t-c
-			template-id="dog"
-			props='{"name": "Buddy", "breed": "Golden Retriever"}'
-		></t-c>
+		<h2>Standalone</h2>
 
-		<t-c template-id="cat" props='{"name": "Whiskers", "age": 3}'></t-c>
+		<t-c template-id="dog">
+			<span slot="name">Buddy</span>
+			<span slot="breed">Golden Retriever</span>
+		</t-c>
 
-		<!-- Composed templates -->
-		<t-c
-			template-id="owner"
-			props='{"owner-name": "Alice"}'
-			child-template-id="cat"
-			child-props='{"name": "Mittens", "age": 5}'
-		></t-c>
+		<t-c template-id="cat">
+			<span slot="name">Whiskers</span>
+			<span slot="age">3</span>
+		</t-c>
 
-		<t-c
-			template-id="owner"
-			props='{"owner-name": "Bob"}'
-			child-template-id="dog"
-			child-props='{"name": "Rex", "breed": "German Shepherd"}'
-		></t-c>
+		<h2>Composed</h2>
+
+		<t-c template-id="owner">
+			<span slot="owner-name">Alice</span>
+			<t-c template-id="cat" slot="pet">
+				<span slot="name">Mittens</span>
+				<span slot="age">5</span>
+			</t-c>
+		</t-c>
+
+		<t-c template-id="owner">
+			<span slot="owner-name">Bob</span>
+			<t-c template-id="dog" slot="pet">
+				<span slot="name">Rex</span>
+				<span slot="breed">German Shepherd</span>
+			</t-c>
+		</t-c>
 	</body>
 </html>
