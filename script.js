@@ -2,7 +2,7 @@ class TemplateContent extends HTMLElement {
 	connectedCallback() {
 		if (this.shadowRoot) return;
 
-		const templateId = this.getAttribute("template-id");
+		const templateId = this.getAttribute("template");
 		const template = document.getElementById(templateId);
 		if (!template) return;
 

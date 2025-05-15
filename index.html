@@ -13,7 +13,7 @@
 			<div class="ring">
 				<h3>Owner</h3>
 				<p>Owner name: <slot name="owner-name"></slot></p>
-				<div class="child-container"><slot name="pet"></slot></div>
+				<slot name="pet"></slot>
 			</div>
 		</template>
 
@@ -37,29 +37,29 @@
 
 		<h2>Standalone</h2>
 
-		<t-c template-id="dog">
+		<t-c template="dog">
 			<span slot="name">Buddy</span>
 			<span slot="breed">Golden Retriever</span>
 		</t-c>
 
-		<t-c template-id="cat">
+		<t-c template="cat">
 			<span slot="name">Whiskers</span>
 			<span slot="age">3</span>
 		</t-c>
 
 		<h2>Composed</h2>
 
-		<t-c template-id="owner">
+		<t-c template="owner">
 			<span slot="owner-name">Alice</span>
-			<t-c template-id="cat" slot="pet">
+			<t-c template="cat" slot="pet">
 				<span slot="name">Mittens</span>
 				<span slot="age">5</span>
 			</t-c>
 		</t-c>
 
-		<t-c template-id="owner">
+		<t-c template="owner">
 			<span slot="owner-name">Bob</span>
-			<t-c template-id="dog" slot="pet">
+			<t-c template="dog" slot="pet">
 				<span slot="name">Rex</span>
 				<span slot="breed">German Shepherd</span>
 			</t-c>
