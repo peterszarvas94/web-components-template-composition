@@ -1,0 +1,61 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title>Page Title</title>
+		<link rel="stylesheet" href="style.css" />
+		<script src="script.js" defer></script>
+		<link rel="icon" href="favicon.ico" />
+	</head>
+	<body>
+		<!-- defining templates -->
+		<template id="owner">
+			<div class="ring">
+				<h2>Owner</h2>
+				<p>Owner name: <span class="owner-name"></span></p>
+				<div class="pet-container"></div>
+			</div>
+		</template>
+		<template id="cat">
+			<div class="ring">
+				<h2>I am a cat</h2>
+				<p>Name: <span class="name"></span></p>
+				<p>Age: <span class="age"></span></p>
+			</div>
+		</template>
+		<template id="dog">
+			<div class="ring">
+				<h2>I am a dog</h2>
+				<p>Name: <span class="name"></span></p>
+				<p>Breed: <span class="breed"></span></p>
+			</div>
+		</template>
+
+		<!-- rendering templates -->
+		<h1>Template Composition Demo</h1>
+
+		<!-- Standalone templates -->
+		<t-c
+			template-id="dog"
+			props='{"name": "Buddy", "breed": "Golden Retriever"}'
+		></t-c>
+
+		<t-c template-id="cat" props='{"name": "Whiskers", "age": 3}'></t-c>
+
+		<!-- Composed templates -->
+		<t-c
+			template-id="owner"
+			props='{"owner-name": "Alice"}'
+			child-template-id="cat"
+			child-props='{"name": "Mittens", "age": 5}'
+		></t-c>
+
+		<t-c
+			template-id="owner"
+			props='{"owner-name": "Bob"}'
+			child-template-id="dog"
+			child-props='{"name": "Rex", "breed": "German Shepherd"}'
+		></t-c>
+	</body>
+</html>
